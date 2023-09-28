@@ -4,13 +4,16 @@ import sys
 from lyricsgenius import Genius
 from googletrans import Translator, LANGUAGES
 
+CLIENT_ID = keys.client_id
+CLIENT_SECRET = keys.client_secret
+
 
 def get_access_token():
     # Prepare data for the token request
     token_url = "https://api.genius.com/oauth/token"
     data = {
-        'client_id': keys.client_id,
-        'client_secret': keys.client_secret,
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET,
         'grant_type': 'client_credentials'
     }
 
