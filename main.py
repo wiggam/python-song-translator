@@ -74,11 +74,8 @@ while True:
 
 
 print()
-time.sleep(2)
 print('Translator uses ISO 639-1 language codes')
-time.sleep(2)
 print('You will need to know the original language code and desired output language code.')
-time.sleep(2)
 show_codes = input(
     'Would you like to see a list of language codes? Y/n: ')
 try:
@@ -105,5 +102,5 @@ while True:
 
 print()
 print('Translating... please wait')
-utils.translate(selected_song_title, song_lang, translate_lang)
+utils.translate_song(selected_song_title, song_lang, translate_lang)
 print(f'Completed - See file - {selected_song_title}.txt')

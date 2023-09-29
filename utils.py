@@ -2,7 +2,8 @@ import requests
 import keys
 import sys
 from lyricsgenius import Genius
-from googletrans import Translator, LANGUAGES
+from languages import LANGUAGES
+from mtranslate import translate
 
 CLIENT_ID = keys.client_id
 CLIENT_SECRET = keys.client_secret
@@ -87,22 +88,20 @@ def print_languages():
         print(f"{code}: {lang}")
 
 
-def translate(text, src_lang, dest_lang):
-    translator = Translator()
-
+def translate_song(text, src_lang, dest_lang):
     # read original song
     with open(f'{text}.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
     # write translation
     with open(f'{text}.txt', 'w', encoding='utf-8') as file:
-        for i, line in enumerate(lines):
+        for line in lines:
             line = line.strip()
 
             # Check if it's a non-empty line
             if line:
                 # translate line
-                translated_line = translator.translate(
-                    text=line, src=src_lang, dest=dest_lang).text
+                translated_line = translate(
+                    line, dest_lang, src_lang)
 
                 file.write(f'{line}\n({translated_line})\n\n')
